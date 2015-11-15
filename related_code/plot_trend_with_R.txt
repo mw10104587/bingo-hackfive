@@ -1,0 +1,2 @@
+p <- ggplot(data)
+p + geom_line(aes(x=data$date,y=data$amount),colour="seagreen4", size=1) + geom_smooth(aes(x=data$date,y=data$amount),method="loess",colour="palegreen4",size=1) + geom_point(aes(x=data$date,y=data$amount), size=4, colour="white") +scale_shape(solid=T) + xlab("Date") + ylab("Trandsaction Amount") + scale_colour_grey()
