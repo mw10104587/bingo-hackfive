@@ -1,7 +1,8 @@
 # bingo-hackfive
-How Bingo player plays in the Presidential Campaign?
-by HACK FIVE
+<h2>How Bingo player plays in the Presidential Campaign?</h2>
+**by HACK FIVE: Chi-An Wang, Chi-Zhi, Haoyang Chen, Ji Liu, Stephan Bisaha**
 
+[see our data viz online](https://bingo-hackfive.herokuapp.com/)
 
 Can you imagine a group of Bingo Players from Michigan donating more money than employees from the Ford Motor Company, or that about one out of every 25 dollars from individual contributions in the State came from Bingo Players? Then you might begin to understand the role of bingo players in the presidential campaign.
 
