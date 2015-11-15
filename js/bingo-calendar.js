@@ -117,8 +117,8 @@ $(document).ready(function(){
 
 			// console.log(d);
 			return '<div class="tip-content">' 
-				+ '<div>Donation: ' + d["amount"] + '</div>' 
-				+ '<div>' + "Date: " + d["date"] + '</div>'
+				+ '<div>Donation: $' + d["amount"] + '</div>' 
+				+ '<div>' + "Date: " + d["date"].replace("-", "/").replace("-", "/") + '</div>'
 				+ '</div>';
 		
 		});
