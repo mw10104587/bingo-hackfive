@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	
-
-	d3.json("../map/mi-oh-merge-data.topo.json", function(error, mi) {
+	d3.json("../map/mi-oh-merge-data-topo.json", function(error, mi) {
 
 	    if (error) return console.error(error);
 
