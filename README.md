@@ -1,4 +1,4 @@
-# bingo-hackfive
+
 <h2>How Bingo player plays in the Presidential Campaign?</h2>
 **by HACK FIVE: Chi-An Wang, Chi-Zhi, Haoyang Chen, Ji Liu, Stephan Bisaha**
 
