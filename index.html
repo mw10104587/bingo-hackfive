@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+  margin: 0;
+}
+
+.chart-wrap{
+  display: table;
+  margin: auto;
+
+  margin-top: 40px;
+}
+
+video#bgvid { 
+    /* position: fixed; */
+    /* top: 50%; */
+    /* left: 50%; */
+    min-width: 100%;
+    /*min-height: 100%;*/
+    min-height: 600px;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    /* -webkit-transform: translateX(-50%) translateY(-50%); */
+    /* transform: translateX(-50%) translateY(-50%); */
+    background: url(img/cover-photo.jpg) no-repeat;
+    background-size: cover;
+}
+
+#title-wrap{
+  position: absolute;
+  top: 25%;
+  left: 8%;
+}
+
+.title{
+  font-size: 44px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  /*stroke: steelblue;*/
+  stroke-width: 1.5px;
+}
+
+
+</style>
+
+<!-- calendar chart -->
+<style>
+
+#calendar-chart{
+
+  display: table;
+  margin: auto;
+
+}
+
+.day {
+  fill: #fff;
+  stroke: #ccc;
+}
+
+.month {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.calendar-tip{
+  font-size: 14px;
+  border: 1px "black" solid;
+}
+
+.tip-content{
+  border: black 1px solid;
+  padding: 5px 6px 5px 6px;
+  background-color: white;
+}
+
+
+
+.RdYlGn .q0-11{fill:rgb(165,0,38)}
+.RdYlGn .q1-11{fill:rgb(215,48,39)}
+.RdYlGn .q2-11{fill:rgb(244,109,67)}
+.RdYlGn .q3-11{fill:rgb(253,174,97)}
+.RdYlGn .q4-11{fill:rgb(254,224,139)}
+.RdYlGn .q5-11{fill:rgb(255,255,191)}
+.RdYlGn .q6-11{fill:rgb(217,239,139)}
+.RdYlGn .q7-11{fill:rgb(166,217,106)}
+.RdYlGn .q8-11{fill:rgb(102,189,99)}
+.RdYlGn .q9-11{fill:rgb(26,152,80)}
+.RdYlGn .q10-11{fill:rgb(0,104,55)}
+
+.YlGn .q0-4{fill:rgb(255,255,204)}
+.YlGn .q1-4{fill:rgb(194,230,153)}
+.YlGn .q2-4{fill:rgb(120,198,121)}
+.YlGn .q3-4{fill:rgb(35,132,67)}
+
+/*.Greens .q0-4{fill:rgb(237,248,233)}
+.Greens .q1-4{fill:rgb(186,228,179)}
+.Greens .q2-4{fill:rgb(116,196,118)}
+.Greens .q3-4{fill:rgb(35,139,69)}*/
+
+.Greens .q0-5{fill:rgb(237,248,233)}
+.Greens .q0-4{fill:rgb(186,228,179)}
+.Greens .q1-4{fill:rgb(116,196,118)}
+.Greens .q2-4{fill:rgb(49,163,84)}
+.Greens .q3-4{fill:rgb(0,109,44)}
+
+</style>
+
+
+<body>
+
+  <div id="cover-video">
+    <video autoplay loop poster="img/cover-photo.png" id="bgvid">
+      <source src="video/bingo_cage.webm" type="video/webm">
+      <source src="video/bingo_cage.mp4" type="video/mp4">
+    </video>
+    <div id="title-wrap">
+      <div class="title"> Title is a title of the</div>
+      <div class="title"> Today is a good day,</div>
+      <div class="title"> and I need sleep </div>
+    </div>
+
+  </div>
+
+  <div id="calendar-chart" class="chart-wrap"></div>
+
+  <div id="map-chart" class="chart-wrap"></div>
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script src="js/d3.js"></script>
+<script type="text/javascript" src="js/topojson.js"></script>
+<script type="text/javascript" src="js/d3-tip.js"></script>
+<script type="text/javascript" src="js/bingo-calendar.js"></script>
+<script type="text/javascript" src="js/map-bingo.js"></script>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 80},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.close); });
+
+// suppressed the plot here, this is the trend of FEC recieved on a timeline
+var svg = d3.select("body").append("svg")
+    .attr("id", "svg-1")
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
+    .attr("width", 0)
+    .attr("height", 0)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("FEC_sum_by_day_array.json", function(error, data) {
+
+  // use this return to supress all things we do in this function
+  return;
+
+  if (error) throw error;
+  
+  data.forEach(function(d) {
+    d.date = parseDate(d.key);
+    d.close = + d.value;
+  });
+
+  var svg = d3.select("body").select("svg")
+  
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  console.log(x.domain());
+  x.domain([new Date(2015, 0,0), new Date(2015,09,01)]);
+  y.domain(d3.extent(data, function(d) { return d.close; }));
+  console.log(y.domain());
+
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line)
+      .attr("stroke", "steelblue");
+
+
+  d3.json("FEC_sum_by_party.json", function(error, data) {
+
+    if (error) throw error;
+  
+    // party names 
+    partyList = ["REP", "UNK", "DEM", "OTH", "DFL", "PAC", "LIB", 
+                 "IND", "NAT", "NNE", "GRE", "CRV", "CON", "D/C", 
+                 "NPA", "WOR", "WFP", "IAP", "UN", "WF"];
+
+
+    var c20 = d3.scale.category20();
+
+    // update date for each element 
+    data.forEach(function(d) {
+      d.date = parseDate(d.key);
+    });
+
+    // line to draw seperated parties
+    var partyLine = d3.svg.line()
+      .x(function(d) { return x(d.date); })
+      .y(function(d) { return y(d.val); });
+
+    // loop through each party
+    for (partyIdx in partyList) {
+
+      var partyLineChart = d3.select("body").select("#svg-1")
+      .append("g")
+        .attr("class", "party-line");
+      
+      // get party name
+      party = partyList[partyIdx]
+
+      // make data for each party
+      partyData = data.map(function(d){
+
+        if (typeof d.value === "undefined") {
+          return {
+            "date": d.date,
+            "val": 0
+          };
+        }
+
+        if (!(party in d.value)){
+
+          return {
+            "date": d.date,
+            "val": 0
+          };  
+
+        }else if(party in d.value){
+          return {
+            "date": d.date,
+            "val": d.value[party]
+          };  
+        }
+        
+      });
+
+/*      
+      console.log(party);
+      console.log(partyData);
+*/
+
+
+      partyLineChart.append("path")
+        .datum(partyData)
+        .attr("class", "line")
+        .attr("d", partyLine)
+        .attr("stroke", function(d){
+          return c20(partyIdx);
+        });
+
+    };
+
+  });
+
+});
+
+
+
+
+
+
+
+</script>
