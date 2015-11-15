@@ -124,6 +124,67 @@ video#bgvid {
 
 </style>
 
+<style type="text/css">
+  
+  .intro{
+    width: 600px;
+    margin: auto;
+  }
+
+  .intro img{
+    width: 100%;
+  }
+
+
+</style>
+
+<style type="text/css">
+
+.top5-center{
+  margin: auto;
+  display: table;
+}
+
+.top5-center{
+  width: 590px;
+}
+
+.top5-center img{
+  width: 100%;
+  height: auto;
+}
+
+@font-face{
+  font-family: noto;
+  src: url(font/NotoSansHant-Light.otf);
+
+}
+
+.paragraph{
+
+  width: 800px;
+  margin: auto;
+  font-size: 16px;
+  font-family: noto;
+
+  text-align: justify;
+  margin-bottom: 40px;
+
+}
+
+.caption{
+  
+  /*width: 800px;*/
+  font-size: 14px;
+  font-family: noto;
+
+  margin-bottom: 10px;
+  /*display: table;*/
+  /*margin: auto;*/
+
+}
+
+</style>
 
 <body>
 
@@ -133,16 +194,67 @@ video#bgvid {
       <source src="video/bingo_cage.mp4" type="video/mp4">
     </video>
     <div id="title-wrap">
-      <div class="title"> Title is a title of the</div>
-      <div class="title"> Today is a good day,</div>
-      <div class="title"> and I need sleep </div>
+      <div class="title"> Bingo! Campaign Cash</div>
+      <div class="title"> Rolls in with Bingo,</div>
+      <div class="title"> in Michigan </div>
     </div>
 
   </div>
 
-  <div id="calendar-chart" class="chart-wrap"></div>
+  
+  <div class="paragraph">
+    <p>Can you imagine a group of Bingo Players from Michigan donating more money than employees from the Ford Motor Company, or that about one out of every 25 dollars from individual contributions in the State came from Bingo Players? Then you might begin to understand the role of bingo players in the presidential campaign.
+    </p>
+  </div>
+
+  <div id="top5-sec">
+    <div class="top5-center"><img src="img/mich-top5-company.png"></div>
+    <div class="caption">Bingo Players compared to top donating companies </div>
+  </div>
+  
+
+  <div class="paragraph">
+    <p>Nearly a thousand donations in Michigan came from locals who listed “Bingo Player” as either their occupation or employer in FEC filings. Based on players Facebook pages, they are a majority female and seniors living in or near Oakland County. 
+</p>
+  </div>
 
   <div id="map-chart" class="chart-wrap"></div>
+  <div class="caption">Mapping of Bingo Players’ locations by zipcode</div>
+
+  <div class="paragraph">
+    <p>Looking into the group, we found all games were run by the Oakland County Democratic Party in Green Acres Bingo Hall. A call to OCDP Bingo revealed that they host Bingo multiple times a day. According to the OCDP, the winners donate their money at will and are not required to donate.  
+    </p>
+  </div>
+
+  <div id="intro-sec">
+    <div class='intro'><img src="img/intro-1.png"></div>
+    <div class='intro'><img src="img/intro-2.png"></div>
+    <div class="caption">Bingo Rules of Oakland Democratic Party</div>
+  </div>
+  
+
+  <div class="paragraph">
+    <p>From January to April $237,215 has been donated by Bingo Players – all to democrats. If donations continue at that rate, these bingo players will have donated well over a million dollars by Election Day.
+    </p>
+  </div>
+
+  <div id="calendar-chart" class="chart-wrap"></div>
+  <div class="caption">Days when Bingo Players donations were filed</div>
+  
+
+  
+
+  <div id="paragraph">
+    <div class="intro"><img src="img/trend-bingo-donation.png">
+      <div class="caption">Line chart of Players’ donation by day</div>
+    </div>
+    
+  </div>
+  
+
+
+
+
 
 </body>
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>

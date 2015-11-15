@@ -162,12 +162,36 @@ $(document).ready(function(){
 
 			// append legend
 			miMap.append("rect")
-				.attr("width", 25)
-				.attr("height", 25)
+				.attr("width", 20)
+				.attr("height", 20)
 				.attr("transform", function(d){
 					return "translate(" + 720 + "," + 10 + ")";
 				})
-				.attr("fill", "red");
+				.attr("fill", "rgba(44,48,221,1)");
+
+			miMap.append("text")
+				.text("Bingo Donations")
+				.attr("transform", function(d){
+					return "translate(" + 745 + "," + 26 + ")";
+				})
+				.style("font-size", 14);
+
+			var legendMargin = 28;
+
+/*			miMap.append("rect")
+				.attr("width", 20)
+				.attr("height", 20)
+				.attr("transform", function(d){
+					return "translate(" + 720 + "," + (10 + legendMargin * 1) + ")";
+				})
+				.attr("fill", "rgba(44,48,221,1)");
+
+			miMap.append("text")
+				.text("Bingo Donations")
+				.attr("transform", function(d){
+					return "translate(" + 745 + "," + (26 + legendMargin * 1) + ")";
+				})
+				.style("font-size", 14);*/
 
 
 

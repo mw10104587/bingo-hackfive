@@ -2,9 +2,9 @@
 $(document).ready(function(){
 
 	// var width = 960,
-	var width = 430,
-	    height = 170,
-	    cellSize = 20; // cell size
+	var width = 520,
+	    height = 200,
+	    cellSize = 25; // cell size
 
 	var percent = d3.format(".1%"),
 	    format = d3.time.format("%Y-%m-%d");
@@ -25,9 +25,32 @@ $(document).ready(function(){
 	    .attr("transform", "translate(" + ((width - cellSize * 17) / 2) + "," + (height - cellSize * 7 - 1) + ")");
 
 	svg.append("text")
-	    .attr("transform", "translate(-6," + cellSize * 3.5 + ")rotate(-90)")
+	    .attr("transform", "translate(-26," + cellSize * 3.5 + ")")
 	    .style("text-anchor", "middle")
-	    .text(function(d) { return d; });
+	    .text(function(d) { return d; })
+	    .style("font-size", 20);
+
+	var monthTextY = -10;
+
+	svg.append("text")
+		.attr("transform", "translate(50," + monthTextY + ")")
+		.text("Jan")
+		.style("font-size", 14);
+
+	svg.append("text")
+		.attr("transform", "translate(160," + monthTextY + ")")
+		.text("Feb")
+		.style("font-size", 14);
+
+	svg.append("text")
+		.attr("transform", "translate(270," + monthTextY + ")")
+		.text("Mar")
+		.style("font-size", 14);
+
+	svg.append("text")
+		.attr("transform", "translate(380," + monthTextY + ")")
+		.text("Apr")
+		.style("font-size", 14);
 
 	var rect = svg.selectAll(".day")
 	    .data(function(d) { return d3.time.days(new Date(d, 0, 1), new Date(d , 4, 1)); })

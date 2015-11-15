@@ -1,0 +1,17 @@
+SQL Code for FEC_data
+
+
+SELECT EMPLOYER, COUNT(*) from [FEC_Data] group by 1 order by 2 desc
+*Showed how many donations per employee listed in FEC data.  Bingo Players came in at 12.  This caught our interest.*
+
+SELECT NAME, EMPLOYER, STATE, TRANSACTION_DT from [FEC_Data] where EMPLOYER like "%BINGO PLAYER%" order by 3
+*A look at who these Bingo Players were revealed that they were almost exclusively from Michigan.  We also saw that they all ended April 30th.*
+
+
+
+SELECT EMPLOYER, SUM(TRANSACTION_AMT), TRANSACTION_DT from [FEC_Data] where TRANSACTION_DT < "5012015" and STATE like "%MI%" group by 1 order by 2 desc
+*A search for top employers revealed that Bingo Players gave more than all but two companies before April 30th.*
+
+SELECT STATE, SUM(TRANSACTION_AMT) from [FEC_Data] where TRANSACTION_DT < "5012015" and STATE like "%MI%" group by 1 order by 2 desc
+*Total number of donations from January 1st to April 30th in Michigan.  Bingo Players make up 3.6 percent of those donations.*  
+
