@@ -35,19 +35,19 @@ Stephan Bisaha: Data engineer, used SQL queries to find insight from the data.
                 
 
 
-<h4>what you've discover</h4>
+<h5>what you've discover</h5>
 By looking into data, we found around 1,000 people named themselves as "Bingo Players" are ranked very high in national transactions for presidential campaign. All their money went to Democrats. They suddenly stopped using "Bingo Player" as their occupation in the end of April, however same people are still donating. We also see the similar amount pattern from the donors.
 By interviewing Oakland Bingo Hall, JI found Oakland County  organized this bingo game everyday, but they said the donation is not compulsory. However, the officer refused to give the exact number of people involved.
 
-<h4>what tools we've used</h4>
+<h5>what tools we've used</h5>
 Data mining: Excel spreadsheet, SQL, Python and R
 Front-end: Javascript, html, css, heroku
 
 
-<h4>What you learned </h4>
+<h5>What you learned </h5>
 When dealing with a big dataset with a lot of missing data, you cannot remove all data or we will skew the result. A better way is to look into some outliers, and find some interesting stories behind it.
 
-<h4>Future plan for this story<h4>
+<h5>Future plan for this story</h5>
 We will dig into the reasons why suddenly donors change their occupation from "Bingo Player" to none; does this bingo game related to money laundry; what's the record in the past years; and how can we predict the overall influence of these bingo players in 2016 campaign? Are there bingo groups in other counties?
 
 
