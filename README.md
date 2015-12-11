@@ -20,6 +20,7 @@ the data we use[https://github.com/mw10104587/bingo-hackfive/blob/gh-pages/data/
 This is a piece of dirty data, with a lot of missing cells. We used SQL, R and Python to discover the data.
 
 
+<h5> What we have done</h5>
 Ji Liu: Team coordinator, formed the team of Journalism,  Computer Science and Statistics background team members; 
         Data miner, looked into the FEC data set and form the story line with other team members; 
         Story reporter, interviewed Oakland Bingo Hall and drafted the story.
